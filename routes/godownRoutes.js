@@ -1,26 +1,12 @@
 const express = require('express');
-const Godown = require('../models/godown');
+const { getAllGodowns, getGodownWithItems } = require('../controllers/godownController'); // Import the controller functions
+
 const router = express.Router();
 
-// Get all godowns
-router.get('/', async (req, res) => {
-  try {
-    const godowns = await Godown.find();
-    res.json(godowns);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+// Route to get all godowns
+router.get('/', getAllGodowns);
 
-// Create a new godown
-router.post('/', async (req, res) => {
-  const godown = new Godown(req.body);
-  try {
-    const newGodown = await godown.save();
-    res.status(201).json(newGodown);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+// Route to get a godown by ID along with its items
+router.get('/:id', getGodownWithItems);
 
 module.exports = router;

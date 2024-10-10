@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import TreeView from "./components/TreeView";
+import ItemDetails from "./components/ItemDetails";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           path="/"
           element={
             <ProtectedRoutes>
-              <TreeView/>
+              <ItemDetails itemId="67077aa259cb6383a4a2195d" />
             </ProtectedRoutes>
           }
         />
