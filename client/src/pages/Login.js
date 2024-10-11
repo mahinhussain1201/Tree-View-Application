@@ -53,7 +53,7 @@ const Login = () => {
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
           <h1 className="my-5 display-3 fw-bold ls-tight px-3" style={{color: 'hsl(218, 81%, 95%)'}}>
             Welcome Back! <br />
-            <span style={{color: 'hsl(218, 81%, 75%)'}}>Please log in to continue</span>
+            <span style={{color: 'hsl(218, 81%, 45%)'}}>Please log in to continue</span>
           </h1>
         </MDBCol>
 
@@ -67,10 +67,10 @@ const Login = () => {
 
               <div className='d-flex justify-content-between mx-3 mb-4'>
                 {/* <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' /> */}
-                <Link to="/register">Not a user? Register</Link>
+                <Link to="/register" style={{color: 'hsl(218, 81%, 45%)'}}>Not a user? Register</Link>
               </div>
 
-              <MDBBtn className='w-100 mb-4' size='md' onClick={() => submitHandler({ email: document.getElementById('email').value, password: document.getElementById('password').value })}>Login</MDBBtn>
+              <MDBBtn className='w-100 mb-4' size='md' onClick={() => submitHandler({ email: document.getElementById('email').value, password: document.getElementById('password').value })} style={{backgroundColor: 'hsl(218, 81%, 45%)'}}>Login</MDBBtn>
 
             </MDBCardBody>
           </MDBCard>

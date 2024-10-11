@@ -53,7 +53,7 @@ const Register = () => {
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
           <h1 className="my-5 display-3 fw-bold ls-tight px-3" style={{color: 'hsl(218, 81%, 95%)'}}>
             Join Us Today! <br />
-            <span style={{color: 'hsl(218, 81%, 75%)'}}>Create an Account</span>
+            <span style={{color: 'hsl(218, 81%, 45%)'}}>Create an Account</span>
           </h1>
         </MDBCol>
 
@@ -70,10 +70,10 @@ const Register = () => {
                 {/* <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' /> */}
               </div>
 
-              <MDBBtn className='w-100 mb-4' size='md' onClick={submitHandler}>Register</MDBBtn>
+              <MDBBtn className='w-100 mb-4' size='md' onClick={submitHandler} style={{backgroundColor: 'hsl(218, 81%, 45%)'}}>Register</MDBBtn>
 
               <div className="text-center">
-                <Link to="/login">Already Registered? Click Here to Login</Link>
+                <Link to="/login" style={{color: 'hsl(218, 81%, 45%)'}}>Already Registered? Click Here to Login</Link>
               </div>
 
             </MDBCardBody>

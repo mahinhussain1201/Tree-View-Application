@@ -107,7 +107,7 @@ function TreeView({ onSelectGodown }) {
   }, []);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <>
   <Box sx={{ position: 'fixed', top: 12, right: 16, zIndex: 9999 }}>
     {/* Logout Button */}
     <Button variant="contained" color="primary" onClick={handleLogout}>
@@ -124,8 +124,7 @@ function TreeView({ onSelectGodown }) {
       {/* Your content here */}
     </DashboardLayout>
   </AppProvider>
-</div>
-
+</>
   );
 }
 

@@ -40,25 +40,35 @@ const ItemDetails = ({ godownId, godownName }) => {
 
   if (loading) return <Typography>Loading...</Typography>; // Loading state
 
-  if (!items.length) return <Typography variant="h3" sx={{ mt: 10 }}>No items found in this godown.</Typography>; // Handle no items case
+  if (!items.length) return <Typography variant="h3" sx={{ mt: 10,color:'white' }}>No items found in this godown.</Typography>; // Handle no items case
 
   return (
     <Box sx={{ p: 2, mt: 8 }}>
-      <Typography variant="h4" sx={{ mb: 2 }}>{godownName}</Typography> {/* Display the godown name */}
+      <Typography 
+  variant="h4" 
+  sx={{ 
+    mb: 2, 
+    color: 'white', 
+    textAlign: 'center',  // Centers the text
+    width: '100%',        // Ensures it takes the full width
+  }}
+>
+  {godownName}
+</Typography> {/* Display the godown name */}
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
               {/* <TableCell>Item ID</TableCell> */}
-              <TableCell>Name</TableCell>
-              <TableCell>Category</TableCell>
-              <TableCell>Quantity</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Brand</TableCell>
-              <TableCell>Material</TableCell>
+              <TableCell sx={{ color:'white' }}>Name</TableCell>
+              <TableCell sx={{ color:'white' }}>Category</TableCell>
+              <TableCell sx={{ color:'white' }}>Quantity</TableCell>
+              <TableCell sx={{ color:'white' }}>Price</TableCell>
+              <TableCell sx={{ color:'white' }}>Status</TableCell>
+              <TableCell sx={{ color:'white' }}>Brand</TableCell>
+              <TableCell sx={{ color:'white' }}>Material</TableCell>
               {/* <TableCell>Warranty (Years)</TableCell> */}
-              <TableCell>Image</TableCell>
+              <TableCell sx={{ color:'white' }}>Image</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

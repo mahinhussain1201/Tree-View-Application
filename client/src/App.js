@@ -33,7 +33,7 @@ function App() {
               {selectedGodownId ? (
                 <ItemDetails godownId={selectedGodownId} godownName={selectedGodownName} />
               ) : (
-                <Typography variant="h3" sx={{ mt: 10 }}>Select a godown to view items</Typography>
+                <Typography variant="h3" sx={{ mt: 10, color:'white' }}>Select a godown to view items</Typography>
               )}
             </Box>
           </ProtectedRoutes>
