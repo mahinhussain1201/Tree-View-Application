@@ -9,6 +9,7 @@ import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Button from '@mui/material/Button'; // Import Button for logout
 
 const demoTheme = createTheme({
   cssVariables: {
@@ -44,12 +45,18 @@ function TreeView({ onSelectGodown }) {
   }, []);
 
   // Handle godown selection
-  const handleGodownSelect = (godownId,godownName) => {
+  const handleGodownSelect = (godownId, godownName) => {
     if (onSelectGodown && typeof onSelectGodown === 'function') {
-      onSelectGodown(godownId,godownName);
+      onSelectGodown(godownId, godownName);
     } else {
       console.error("onSelectGodown is not a function");
     }
+  };
+
+  // Logout function to clear localStorage and redirect to login
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // Clear user data from local storage
+    window.location.href = "/login"; // Redirect to login page
   };
 
   // Helper function to build the navigation tree
@@ -64,7 +71,7 @@ function TreeView({ onSelectGodown }) {
           title: (
             <Typography
               sx={{ whiteSpace: 'normal', wordWrap: 'break-word' }}
-              onClick={() => handleGodownSelect(godown.id,godown.name)} // Handle click to select godown
+              onClick={() => handleGodownSelect(godown.id, godown.name)} // Handle click to select godown
             >
               {godown.name}
             </Typography>
@@ -79,7 +86,7 @@ function TreeView({ onSelectGodown }) {
       title: (
         <Typography
           sx={{ whiteSpace: 'normal', wordWrap: 'break-word' }}
-          onClick={() => handleGodownSelect(godown.id)} // Handle click to select godown
+          onClick={() => handleGodownSelect(godown.id, godown.name)} // Handle click to select godown
         >
           {godown.name}
         </Typography>
@@ -100,18 +107,25 @@ function TreeView({ onSelectGodown }) {
   }, []);
 
   return (
-    <AppProvider
-      navigation={navigation}
-      router={router}
-      theme={demoTheme}
-    >
-      <DashboardLayout>
-        {/* <Box sx={{ p: 2 }}>
-          <h2>Welcome to the Godown Management System</h2>
-          <p>Select a godown or sub-godown from the navigation to view details.</p>
-        </Box> */}
-      </DashboardLayout>
-    </AppProvider>
+    <div style={{ position: 'relative' }}>
+  <Box sx={{ position: 'fixed', top: 12, right: 16, zIndex: 9999 }}>
+    {/* Logout Button */}
+    <Button variant="contained" color="primary" onClick={handleLogout}>
+      Logout
+    </Button>
+  </Box>
+
+  <AppProvider
+    navigation={navigation}
+    router={router}
+    theme={demoTheme}
+  >
+    <DashboardLayout>
+      {/* Your content here */}
+    </DashboardLayout>
+  </AppProvider>
+</div>
+
   );
 }
 

@@ -64,26 +64,31 @@ const ItemDetails = ({ godownId, godownName }) => {
           <TableBody>
             {items.map((item) => (
               <TableRow key={item.item_id}>
-                {/* <TableCell>{item.item_id}</TableCell> */}
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.category}</TableCell>
-                <TableCell>{item.quantity}</TableCell>
-                <TableCell>${item.price}</TableCell>
-                <TableCell sx={{ color: item.status === 'in_stock' ? 'green' : 'red' }}>{item.status}</TableCell>
-                <TableCell>{item.brand}</TableCell>
-                <TableCell>{item.attributes.material}</TableCell>
-                {/* <TableCell>{item.attributes.warranty_years}</TableCell> */}
-                <TableCell>
-                  {item.image_url && (
-                    <img
-                      src={item.image_url}
-                      alt={item.name}
-                      style={{ width: '50px', height: '50px', cursor: 'pointer' }}
-                      onClick={() => handleImageClick(item.image_url)} // Click event to open modal
-                    />
-                  )}
-                </TableCell>
-              </TableRow>
+              {/* <TableCell>{item.item_id}</TableCell> */}
+              <TableCell>{item.name ? item.name : "N/A"}</TableCell>
+              <TableCell>{item.category ? item.category : "N/A"}</TableCell>
+              <TableCell>{item.quantity !== undefined ? item.quantity : "N/A"}</TableCell>
+              <TableCell>{item.price ? `$${item.price}` : "N/A"}</TableCell>
+              <TableCell sx={{ color: item.status === 'in_stock' ? 'green' : 'red' }}>
+                {item.status ? item.status : "N/A"}
+              </TableCell>
+              <TableCell>{item.brand ? item.brand : "N/A"}</TableCell>
+              <TableCell>{item.attributes?.material ? item.attributes.material : "N/A"}</TableCell>
+              {/* <TableCell>{item.attributes?.warranty_years ? item.attributes.warranty_years : "N/A"}</TableCell> */}
+              <TableCell>
+                {item.image_url ? (
+                  <img
+                    src={item.image_url}
+                    alt={item.name}
+                    style={{ width: '50px', height: '50px', cursor: 'pointer' }}
+                    onClick={() => handleImageClick(item.image_url)} // Click event to open modal
+                  />
+                ) : (
+                  "N/A"
+                )}
+              </TableCell>
+            </TableRow>
+            
             ))}
           </TableBody>
         </Table>
