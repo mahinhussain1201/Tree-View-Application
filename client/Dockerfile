@@ -1,7 +1,5 @@
 FROM node:17-alpine
 
-RUN npm install -g nodemon
-
 WORKDIR /app
 
 COPY package.json .
@@ -10,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 3000
 
-CMD ["npm", "run", "server"]
+CMD ["npm", "start"]
