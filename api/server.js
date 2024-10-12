@@ -1,15 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/connectDb");
-const godownRoutes = require("./routes/godownRoutes");
-const itemRoutes = require("./routes/itemRoutes");
 const morgan=require('morgan');
 const dotenv=require('dotenv');
+const helmet=require('helmet');
 
 const app = express();
 dotenv.config();
 
 app.use(cors());
+app.use(helmet());
 app.use(express.json());
 app.use(morgan("dev"));
 connectDB();

@@ -1,18 +1,21 @@
 const bcrypt = require("bcryptjs");
 const userModel = require("../models/user");
 
-// Login Controller
 const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find user by email
     const user = await userModel.findOne({ email });
-    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
 
-    // Compare the provided password with the hashed password stored in the database
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ success: false, message: "Invalid credentials" });
+    if (!isMatch)
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid credentials" });
 
     res.status(200).json({
       success: true,

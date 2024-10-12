@@ -1,24 +1,21 @@
-const Godown = require('../models/godown');
+const Godown = require("../models/godown");
 
-// Get all godowns
 const getAllGodowns = async (req, res) => {
   try {
-    const godowns = await Godown.find(); // Fetch all godowns from the database
-    res.json(godowns); // Send the fetched godowns as a response
+    const godowns = await Godown.find();
+    res.json(godowns);
   } catch (error) {
-    res.status(500).json({ message: error.message }); // Handle any errors
+    res.status(500).json({ message: error.message });
   }
 };
 
-// Get a godown by ID along with its items
 const getGodownWithItems = async (req, res) => {
   try {
-    const godown = await Godown.findOne({ id: req.params.id }); // Fetch the godown by ID
+    const godown = await Godown.findOne({ id: req.params.id });
     if (!godown) {
-      return res.status(404).json({ message: 'Godown not found' }); // Handle not found case
+      return res.status(404).json({ message: "Godown not found" });
     }
 
-    // Fetch items that belong to this godown
     const items = await Item.find({ godown_id: req.params.id });
 
     res.json({
@@ -26,7 +23,7 @@ const getGodownWithItems = async (req, res) => {
       items,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message }); // Handle any errors
+    res.status(500).json({ message: error.message });
   }
 };
 

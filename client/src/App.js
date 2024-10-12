@@ -4,17 +4,16 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import TreeView from "./components/TreeView";
 import ItemDetails from "./components/ItemDetails";
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box'; // Import Box for layout
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 function App() {
   const [selectedGodownId, setSelectedGodownId] = useState(null);
-  const [selectedGodownName, setSelectedGodownName] = useState('');
+  const [selectedGodownName, setSelectedGodownName] = useState("");
 
-  // Callback function to update selected godownId and name
   const handleGodownSelect = (godownId, godownName) => {
-    console.log("Selected Godown ID:", godownId); // For debugging
-    console.log("Selected Godown Name:", godownName); // For debugging
+    console.log("Selected Godown ID:", godownId);
+    console.log("Selected Godown Name:", godownName);
     setSelectedGodownId(godownId);
     setSelectedGodownName(godownName);
   };
@@ -26,14 +25,17 @@ function App() {
         element={
           <ProtectedRoutes>
             <Box sx={{ display: "flex", flexDirection: "row", p: 2 }}>
-              {/* Pass handleGodownSelect to TreeView */}
               <TreeView onSelectGodown={handleGodownSelect} />
-              
-              {/* Show ItemDetails if a godown is selected */}
+
               {selectedGodownId ? (
-                <ItemDetails godownId={selectedGodownId} godownName={selectedGodownName} />
+                <ItemDetails
+                  godownId={selectedGodownId}
+                  godownName={selectedGodownName}
+                />
               ) : (
-                <Typography variant="h3" sx={{ mt: 10, color:'white' }}>Select a godown to view items</Typography>
+                <Typography variant="h3" sx={{ mt: 10, color: "#1A1A1A" }}>
+                  Select a godown to view items
+                </Typography>
               )}
             </Box>
           </ProtectedRoutes>

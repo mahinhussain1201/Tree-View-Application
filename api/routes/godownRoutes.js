@@ -3,10 +3,8 @@ const { getAllGodowns, getGodownWithItems } = require('../controllers/godownCont
 
 const router = express.Router();
 
-// Route to get all godowns
 router.get('/', getAllGodowns);
 
-// Route to get a godown by ID along with its items
 router.get('/:id', getGodownWithItems);
 
 module.exports = router;

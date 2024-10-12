@@ -11,7 +11,6 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBCheckbox
 } from 'mdb-react-ui-kit';
 
 const Login = () => {
@@ -26,10 +25,9 @@ const Login = () => {
       setLoading(false);
       message.success("Login successful");
 
-      // Store the user data and token in localStorage (assuming backend sends a token)
       localStorage.setItem(
         "user",
-        JSON.stringify({ ...data.user, token: data.token }) // Store token if available
+        JSON.stringify({ ...data.user, token: data.token }) 
       );
       navigate("/");
     } catch (error) {
@@ -38,7 +36,6 @@ const Login = () => {
     }
   };
 
-  // Prevent logged-in users from accessing the login page
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -58,19 +55,18 @@ const Login = () => {
         </MDBCol>
 
         <MDBCol md='6' className='position-relative'>
-          <MDBCard className='my-5 bg-glass'>
+          <MDBCard className='my-5 bg-glass' style={{ borderRadius: '40px' }}>
             <MDBCardBody className='p-5'>
               {loading && <Spinner />}
               
-              <MDBInput wrapperClass='mb-4' label='Email' id='email' type='email'/>
-              <MDBInput wrapperClass='mb-4' label='Password' id='password' type='password'/>
+              <MDBInput wrapperClass='mb-4' label='Email' id='email' type='email' style={{ borderRadius: '40px' }}/>
+              <MDBInput wrapperClass='mb-4' label='Password' id='password' type='password' style={{ borderRadius: '40px' }}/>
 
               <div className='d-flex justify-content-between mx-3 mb-4'>
-                {/* <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' /> */}
                 <Link to="/register" style={{color: 'hsl(218, 81%, 45%)'}}>Not a user? Register</Link>
               </div>
 
-              <MDBBtn className='w-100 mb-4' size='md' onClick={() => submitHandler({ email: document.getElementById('email').value, password: document.getElementById('password').value })} style={{backgroundColor: 'hsl(218, 81%, 45%)'}}>Login</MDBBtn>
+              <MDBBtn className='w-100 mb-4' size='md' onClick={() => submitHandler({ email: document.getElementById('email').value, password: document.getElementById('password').value })} style={{backgroundColor: 'hsl(218, 81%, 45%)', borderRadius: '40px'}}>Login</MDBBtn>
 
             </MDBCardBody>
           </MDBCard>
