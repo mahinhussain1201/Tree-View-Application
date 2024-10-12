@@ -35,7 +35,7 @@ const ItemDetails = ({ godownId, godownName }) => {
     const fetchItems = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/items/godown/${godownId}`
+          `https://tree-view-application.onrender.com/api/items/godown/${godownId}`
         );
         setItems(response.data);
         setFilteredItems(response.data);

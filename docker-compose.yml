@@ -1,6 +1,7 @@
 services:
   api:
     build: ./api
+    image: mahinhussain1201/tree_view_application:api
     container_name: api_c
     ports:
       - '8080:8080'
@@ -9,6 +10,7 @@ services:
       - /app/node_modules
   client:
     build: ./client
+    image: mahinhussain1201/tree_view_application:client
     container_name: client_c
     ports:
       - '3000:3000'

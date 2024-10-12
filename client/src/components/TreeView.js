@@ -31,7 +31,7 @@ function TreeView({ onSelectGodown }) {
 
   const fetchGodowns = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/godowns");
+      const response = await axios.get("https://tree-view-application.onrender.com/api/godowns");
       setGodowns(response.data);
     } catch (error) {
       console.error("Error fetching godowns:", error);

@@ -12,6 +12,7 @@ import {
   MDBCardBody,
   MDBInput,
 } from "mdb-react-ui-kit";
+import Footer from "../components/Footer";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Register = () => {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:8080/api/users/register", values);
+      await axios.post("https://tree-view-application.onrender.com/api/users/register", values);
       message.success("Registration Successful");
       setLoading(false);
       navigate("/login");
@@ -45,6 +46,7 @@ const Register = () => {
   }, [navigate]);
 
   return (
+    <>
     <MDBContainer
       fluid
       className="p-4 background-radial-gradient overflow-hidden"
@@ -116,6 +118,7 @@ const Register = () => {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    <Footer/></>
   );
 };
 

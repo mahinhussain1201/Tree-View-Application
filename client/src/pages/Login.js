@@ -12,6 +12,7 @@ import {
   MDBCardBody,
   MDBInput,
 } from 'mdb-react-ui-kit';
+import Footer from "../components/Footer";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,7 @@ const Login = () => {
   const submitHandler = async (values) => {
     try {
       setLoading(true);
-      const { data } = await axios.post("http://localhost:8080/api/users/login", values);
+      const { data } = await axios.post("https://tree-view-application.onrender.com/api/users/login", values);
       setLoading(false);
       message.success("Login successful");
 
@@ -45,6 +46,7 @@ const Login = () => {
   }, [navigate]);
 
   return (
+    <>
     <MDBContainer fluid className='p-4 background-radial-gradient overflow-hidden'>
       <MDBRow>
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
@@ -73,6 +75,7 @@ const Login = () => {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    <Footer/></>
   );
 };
 
